@@ -4,15 +4,18 @@
   "description": "a how long to beat api interface to excel ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.7",
     "csv": "^6.2.12",
     "howlongtobeat": "^1.7.0"
   },
   "devDependencies": {
+    "@types/node": "^20.1.0",
+    "mocha": "^10.2.0",
     "typescript": "^5.0.4"
   }
 }
