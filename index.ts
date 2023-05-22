@@ -1,26 +1,24 @@
 import { HowLongToBeatService, HowLongToBeatEntry } from "howlongtobeat";
+import { GameHour } from "./models/Classes";
 
-type Hours = {
-  MinHours: number
-  MaxHours: number
-  Medium: number
+class service {
+    private howLongToBeatService: HowLongToBeatService;
+    constructor(howLongToBeatService: HowLongToBeatService) {
+        this.howLongToBeatService = howLongToBeatService;
+    }
+
+    async search(name: string): Promise<GameHour> {
+        const results = await this.howLongToBeatService.search(name) as HowLongToBeatEntry[];
+        const result = results.shift() as HowLongToBeatEntry;
+        const hour = new GameHour(name, result.gameplayMain, result.gameplayMainExtra);
+        console.log(hour);
+        return hour;
+    };
 }
 
-type HLTBRunner = {
-  Parser,
-  Writter,
-  Reader,
-  Search: (name: string) => Hours,
-}
-
-let runner : HLTBRunner
-
-let hltbService = new HowLongToBeatService();
-const search = (name: string) => (Hours) => {
-
-};
-runner.Search = (name: string) => Hours {
+const hltbs = new service(new HowLongToBeatService)
 
 
-hltbService.search('nioh').then(result => console.log(result));
-};
+hltbs.search('nioh')
+    .then(result => console.log('feito!'))
+    .catch(err => console.log(`err ${err}`));
